@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+    <h1 class="cTitle"> Add new article of clothing</h1>
+</div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+
+<form class="cForm" action="/create_article">
+
+  <div class="form-group">
+  <label for="image"> Image url</label>
+  <input class="form-control" type="text" id= "image" name="image" >
+</div>
+<div class="form-group">
+
+  <label for="caption"> Caption </label>
+  <input class="form-control" type="text" id="caption" name="caption" >
+</div>
+  <label for="type">Type</label>
+  <br>
+  <input type="radio" name="category" value="top" checked>
+  <label class="cRadio"> Top </label>
+  <input type="radio" name="category" value="bottom" checked>
+  <label class="cRadio"> Bottom </label>
+  <input type="radio" name="category" value="footwear" checked>
+  <label class="cRadio"> Footwear </label>
+  <br>
+  <br>
+  <input class="btn btn-primary" type="submit" >
+</form>
+</div>
+</div>
+</div>

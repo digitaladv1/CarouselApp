@@ -1,0 +1,77 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ .container{
+   background-color:#F0F8FF;
+   padding-bottom: 20pt;
+   border-radius: 5pt;
+ }
+.cCloset img{
+border-style: dotted;
+border-color: white;
+border-radius: 20pt;
+}
+.cCloset a{
+margin-bottom: 20pt;
+
+}
+.cCloset p{
+margin-bottom: -1pt;
+margin-top: -1pt;
+}
+
+.btn-primary, .btn-primary:active, .btn-primary:visited{
+background-color: white !important;
+color: black;
+}
+
+.btn-primary:hover{
+  background-color: #104a76 !important;
+}
+
+.cForm label{
+  font-size: 20pt;
+  color: black;
+}
+
+.cRadio {
+  font-size:12pt !important;
+  color: #d65683;
+  padding-right: 10pt;
+
+}
+
+
+.cTitle {
+padding:30pt;
+Background-color:#6495ED;
+border-radius: 10px;
+font-family: 'Abel', sans-serif;
+font-size:30pt;
+}
+
+p {
+  font-family: 'Abel', sans-serif;
+}
+.cCarousel{
+padding: 20px;
+
+}
+.cChoose_button{
+position: absolute;
+top:80%;
+left:10%;
+
+}

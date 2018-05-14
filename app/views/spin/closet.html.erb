@@ -1,0 +1,28 @@
+<div class= "container text-center">
+<div class= "row">
+<div class= "col-md-12">
+
+<h1 class= "cTitle"> My Closet </h1>
+</div>
+</div>
+
+<div class= "row cCloset">
+<% Photo.all.each do |p| %>
+<div class= "col-md-4">
+
+  <% if p.image ==""%>
+  <img src="/missing_image.png" width="100%">
+  <% else %>
+  <img src="<%=p.image%>" width="100%">
+  <% end %>
+  <p> <%= p.caption %> </p>
+  <p> <%=p.category %> </p>
+  <a class="btn btn-primary" href="/closet/<%= p.id %>/edit">Edit</a>
+</div>
+
+<% end %>
+
+
+</div>
+
+</div>
