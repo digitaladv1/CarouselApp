@@ -69,9 +69,29 @@ p {
 padding: 20px;
 
 }
-.cChoose_button{
+.cImage_Container .item img{
+width: 200px;
+}
+.cChoose_button  > input{
+visibility: hidden;
 position: absolute;
-top:80%;
-left:10%;
+}
 
+.cChoose_button  > input + img{
+  cursor: pointer;
+  position: absolute;
+opacity:0.5;
+}
+.cChoose_button > img{
+position:relative;
+top: 0;
+left: 0;
+height: 100%;
+background: RGBA(255,255,255,0.5);
+}
+
+.cChoose_button  > input:checked + img{
+visibility: visible;
+border:2px dashed;
+background: RGBA(1,1,1,0.0);
 }

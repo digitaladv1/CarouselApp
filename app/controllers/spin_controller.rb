@@ -10,7 +10,7 @@ end
 
 def create
   photo = Photo.new
-  photo.image = params['image']
+  photo.image = params[:image]
 photo.caption = params['caption']
 photo.category = params['category']
 photo.save
@@ -27,7 +27,7 @@ end
  end
  def update_closet
    photo = Photo.find(params['id'])
-   photo.image = params['image']
+   photo.image = params[:image]
  photo.caption = params['caption']
  photo.category = params['category']
  photo.save
@@ -38,17 +38,17 @@ end
    render("index.html.erb")
  end
 def mark_worn
-  tracker= Tracker.where(item_id:params['top']).first_or_create()
+  tracker= Tracker.new
 tracker.item_id=params['top']
   tracker.time_last_worn = DateTime.now
 tracker.save
 
-tracker= Tracker.where(item_id:params['bottom']).first_or_create()
+tracker= Tracker.new
 tracker.item_id=params['bottom']
 tracker.time_last_worn = DateTime.now
 tracker.save
 
-tracker= Tracker.where(item_id:params['footwear']).first_or_create()
+tracker= Tracker.new
 tracker.item_id=params['footwear']
 tracker.time_last_worn = DateTime.now
 tracker.save
@@ -57,4 +57,9 @@ redirect_to("/")
 
 end
 
+def destroy_article
+  photo= Photo.find(params['id'])
+  photo.destroy
+  redirect_to("/closet")
+end
 end

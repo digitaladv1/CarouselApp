@@ -1,16 +1,31 @@
+<div class="container center">
+  <div class="row">
+    <div class="col-md-12">
+    <h1 class="cTitle"> Edit an article of clothing</h1>
+</div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+
 <h1> <%= @photo.caption %></h1>
 <img src="<%= @photo.image %>" width="500px">
-<form action="/update_closet/ <%= @photo.id %>">
-  <label for="image"> Image url</label>
-  <input type="text" id= "image" name="image" value="<%= @photo.image %>">
+<form class="cForm" method="post" action="/update_closet/ <%= @photo.id %>" enctype="multipart/form-data">
+<div class="form-group">
+  <label for="image"> Image </label>
+  <input type="file" id= "image" name="image" value="<%= @photo.image %>">
   <br>
   <label for="caption"> Caption </label>
   <input type="text" id="caption" name="caption" value="<%= @photo.caption %>">
   <br>
   <label for="type">Type</label>
   <br>
-  <input type="radio" name="category" value="top" checked> Top <br>
-  <input type="radio" name="category" value="bottom" checked> Bottom <br>
-  <input type="radio" name="category" value="footwear" checked> Footwear <br>
-  <input type="submit" >
+  <input class= "cRadio" type="radio" name="category" value="top" checked> Top <br>
+  <input class= "cRadio"  type="radio" name="category" value="bottom" checked> Bottom <br>
+  <input  class= "cRadio" type="radio" name="category" value="footwear" checked> Footwear <br>
+  <input  class="btn btn-primary" type="submit" >
+</div>
 </form>
+</br>
+<a class="btn btn-danger" href="/destroy_article/<%= @photo.id %>">Remove from Closet</a>
+</div>
+</div>

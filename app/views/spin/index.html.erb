@@ -1,7 +1,4 @@
-<% Tracker.all.each do |tlw|%>
-<%= tlw.time_last_worn.strftime("%m/%d/%y %H:%M:%S") %>
-<br>
-<% end %>
+
 
 
 
@@ -23,17 +20,39 @@
 
   <% Photo.all.each do |p| %>
   <% if p.category == "top"%>
+  <% d = Tracker.where(:item_id => p.id).order("time_last_worn desc").first %>
+  <% if d != nil then
+    time_since_worn = distance_of_time_in_words(d.time_last_worn , Time.now) + " since worn"
+  else
+    time_since_worn = "never worn" end %>
   <% if p.image == ""%>
   <div class="cImage_Container">
 
-  <div class="item"><img src="/missing_image.png" width="100%"> </div>
-<input class="cChoose_button" type="radio" name="top" value="<%=p.id%>">
+
+  <div class="item">
+        <img src="/missing_image.png" width="100%"></div>
+    <label class="cChoose_button">
+      <input  type="radio" name="top" value="<%=p.id%>">
+<img src="/border.png" width="100%" data-toggle="tooltip"  title="<%= time_since_worn %>">
+
+</label>
+
+
+
+
 </div>
   <% else %>
   <div class="cImage_Container">
 
-    <div class="item"><img src="<%=p.image%>" width="100%"> </div>
-<input class="cChoose_button" type="radio" name="top" value="<%=p.id%>">
+    <div class="item"><img src="<%=p.image%>" width="100%"onerror="this.src='/missing_image.png';"> </div>
+
+    <label class="cChoose_button">
+      <input  type="radio" name="top" value="<%=p.id%>">
+<img src="/border.png" width="100%" data-toggle="tooltip"  title="<%= time_since_worn %>">
+
+</label>
+
+
 </div>
     <%end%>
       <%end%>
@@ -44,18 +63,36 @@
 
   <% Photo.all.each do |p| %>
   <% if p.category == "bottom"%>
+  <% d = Tracker.where(:item_id => p.id).order("time_last_worn desc").first %>
+  <% if d != nil then
+    time_since_worn = distance_of_time_in_words(d.time_last_worn , Time.now)
+  else
+    time_since_worn = "never worn" end %>
   <% if p.image == ""%>
   <div class="cImage_Container">
 
       <div class="item"><img src="/missing_image.png" width="100%"> </div>
-<input class="cChoose_button" type="radio" name="bottom" value="<%=p.id%>">
+        <label class="cChoose_button">
+          <input  type="radio" name="bottom" value="<%=p.id%>">
+    <img src="/border.png" width="100%" data-toggle="tooltip"  title="<%= time_since_worn %>">
+
+    </label>
+
+
+
 </div>
 
   <% else %>
   <div class="cImage_Container">
 
-    <div class="item"><img src="<%=p.image%>" width="100%"> </div>
-<input class="cChoose_button" type="radio" name="bottom" value="<%=p.id%>">
+    <div class="item"><img src="<%=p.image%>" width="100%" onerror="this.src='/missing_image.png';"> </div>
+
+    <label class="cChoose_button">
+      <input  type="radio" name="bottom" value="<%=p.id%>">
+  <img src="/border.png" width="100%" data-toggle="tooltip"  title="<%= time_since_worn %>">
+
+  </label>
+
 </div>
     <%end%>
       <%end%>
@@ -67,32 +104,52 @@
 
   <% Photo.all.each do |p| %>
   <% if p.category == "footwear"%>
+  <% d = Tracker.where(:item_id => p.id).order("time_last_worn desc").first %>
+  <% if d != nil then
+    time_since_worn = distance_of_time_in_words(d.time_last_worn , Time.now)
+  else
+    time_since_worn = "never worn" end %>
   <% if p.image == ""%>
   <div class="cImage_Container">
 
     <div class="item"><img src="/missing_image.png" width="100%"> </div>
-<input class="cChoose_button" type="radio" name="footwear" value="<%=p.id%>">
+    <label class="cChoose_button">
+      <input  type="radio" name="footwear" value="<%=p.id%>">
+  <img src="/border.png" width="100%" data-toggle="tooltip"  title="<%= time_since_worn %>">
+
+  </label>
+
 </div>
 
 
   <% else %>
   <div class="cImage_Container">
 
-    <div class="item"><img src="<%=p.image%>" width="100%"> </div>
-<input class="cChoose_button" type="radio" name="footwear" value="<%=p.id%>">
+    <div class="item"><img src="<%=p.image%>" width="100%"onerror="this.src='/missing_image.png';"> </div>
+    <label class="cChoose_button">
+      <input  type="radio" name="footwear" value="<%=p.id%>">
+  <img src="/border.png" width="100%" data-toggle="tooltip"  title="<%= time_since_worn %>">
+
+  </label>
+
 </div>
     <%end%>
       <%end%>
         <%end%>
 </div>
-      <input type="submit" value="Wear It!">
+<span style="text-align:center; margin-left: 0%; width:100%; ">
+      <input class="btn btn-primary" style="font-size: 40px;" type="submit" value="Wear It!" ></span>
         </form>
 </div>
 <script>
 $('.owl-carousel').owlCarousel({
     loop:true,
     margin:10,
-    nav:true,
+    nav:false,
+    dots:false,
+    center:true,
+    autoHeight: true,
+    autoWidth: true,
     responsive:{
         0:{
             items:1
@@ -105,5 +162,12 @@ $('.owl-carousel').owlCarousel({
         }
     }
 })
+</script>
+<script type="text/javascript">
+  $(document).ready(function(){
+$('[data-toggle="tooltip"]').tooltip();
+
+  });
+
 </script>
 </div>
