@@ -6,8 +6,12 @@ git_source(:github) do |repo_name|
 end
 
 gem 'devise'
+<<<<<<< HEAD
 gem "carrierwave"
 gem "cloudinary"
+=======
+
+>>>>>>> 9c74fabcbee421c8ed2d865af48224fbce6634f4
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.6'
